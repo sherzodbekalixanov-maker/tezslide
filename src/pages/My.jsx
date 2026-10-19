@@ -1,0 +1,7 @@
+import {useEffect,useState} from 'react';import {Link} from 'react-router-dom';import {Trash2} from 'lucide-react';import {supabase} from '../lib/supabase';
+export default function My(){const [l,setL]=useState(null),[err,setE]=useState('');
+useEffect(()=>{supabase.from('presentations').select('id,title,created_at,slides').order('created_at',{ascending:false}).then(({data,error})=>error?setE(error.message):setL(data))},[]);
+async function del(id){if(!confirm('O‘chirilsinmi?'))return;const {error}=await supabase.from('presentations').delete().eq('id',id);error?setE(error.message):setL(l.filter(x=>x.id!==id))}
+return <div className="pt-32 max-w-5xl mx-auto px-4"><div className="flex justify-between mb-6"><h1 className="text-3xl font-extrabold grad">Mening prezentatsiyalarim</h1><Link to="/create" className="btn">+ Yangi</Link></div>
+{err&&<p className="text-red-400">{err}</p>}{!l&&!err&&<p>Yuklanmoqda…</p>}{l&&!l.length&&<p className="text-white/60">Hozircha bo‘sh. Birinchisini yarating!</p>}
+<div className="grid md:grid-cols-3 gap-5">{l?.map(p=><div key={p.id} className="glass p-5 hover:-translate-y-1 transition"><Link to={`/editor/${p.id}`}><b>{p.title}</b><div className="text-xs text-white/50 mt-1">{p.slides.length} slayd · {new Date(p.created_at).toLocaleDateString()}</div></Link><button onClick={()=>del(p.id)} className="mt-3 text-red-400"><Trash2 size={16}/></button></div>)}</div></div>}

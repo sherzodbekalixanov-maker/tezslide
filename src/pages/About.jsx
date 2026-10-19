@@ -1,0 +1,3 @@
+import {motion} from 'framer-motion';
+export default function About(){return <motion.div initial={{opacity:0}} animate={{opacity:1}} className="pt-32 max-w-3xl mx-auto px-4"><h1 className="text-4xl font-extrabold grad mb-6">TezSlide haqida</h1>
+{['Maqsadimiz — prezentatsiya tayyorlash vaqtini soatlardan daqiqalarga tushirish.','AI slaydlar matni, punktlari va spiker eslatmalarini yaratadi; siz esa uni erkin tahrirlaysiz.','O‘zbek tilini birinchi darajali qo‘llab-quvvatlaymiz.'].map((t,i)=><motion.p key={i} initial={{opacity:0,x:-30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} className="glass p-5 mb-4">{t}</motion.p>)}</motion.div>}

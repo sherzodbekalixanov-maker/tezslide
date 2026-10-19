@@ -1,0 +1,1 @@
+export const THEMES={neon:{name:'Neon',bg:'#0b0b24',bg2:'#3b0f6b',acc:'#22d3ee',txt:'#ffffff'},ocean:{name:'Ocean',bg:'#06142e',bg2:'#0c4a8f',acc:'#7dd3fc',txt:'#ffffff'},minimal:{name:'Minimal',bg:'#ffffff',bg2:'#eef2ff',acc:'#6d28d9',txt:'#111827'},dark:{name:'Dark',bg:'#000000',bg2:'#1f1f2e',acc:'#a855f7',txt:'#ffffff'}};
